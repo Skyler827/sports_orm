@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sports Leagues</title>
+</head>
+<body>
+    {% for list_ in lists %}
+        <h1>{{ list_.title }}</h1>
+        {% if list_.type == "Players" %}
+            <ol>
+                {% for player in list_.expression %}
+                    <li>{{ player.first_name }} {{ player.last_name }}</li>
+                {% endfor %}
+            </ol>
+        {% elif list_.type == "Teams" %}
+            <ol>
+                {% for team in list_.expression %}
+                    <li>{{ team.location }} {{ team.name }}</li>
+                {% endfor %}
+            </ol>
+        {% elif list_.type == "Leagues" %}
+            <ol>
+                {% for league in list_.expression %}
+                    <li>{{ league.name }}</li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            Error with {{ list_.title }}: invalid type
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
