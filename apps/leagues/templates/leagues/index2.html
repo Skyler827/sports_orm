@@ -16,7 +16,7 @@
         {% elif list_.type == "Teams" %}
             <ol>
                 {% for team in list_.expression %}
-                    <li>{{ team.location }} {{ team.name }}</li>
+                    <li>{{ team.location }} {{ team.team_name }}</li>
                 {% endfor %}
             </ol>
         {% elif list_.type == "Leagues" %}
@@ -29,5 +29,21 @@
             Error with {{ list_.title }}: invalid type
         {% endif %}
     {% endfor %}
+    <h1>All Players/Count of teams played for</h1>
+    <h3>sorted by the number of teams they've played for</h3>
+    <table>
+        <thead>
+            <th>Number of Teams</th>
+            <th>Player Name</th>
+        </thead>
+        <tbody>
+            {% for player in last_list %}
+                <tr>
+                    <td>{{ player.teams }}</td>
+                    <td>{{ player.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
